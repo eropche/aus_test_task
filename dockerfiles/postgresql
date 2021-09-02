@@ -1,0 +1,11 @@
+FROM postgres:13 as dev
+
+ENV TZ=Europe/Moscow
+
+RUN localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
+ENV LANG ru_RU.utf8
+
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+
+ADD ./docker/postgresql/docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
