@@ -1,0 +1,6 @@
+framework:
+    http_client:
+        max_host_connections: 10
+        scoped_clients:
+            random.users.api.client:
+                base_uri: '%env(RANDOM_USERS_API_URL)%'

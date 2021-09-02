@@ -8,5 +8,5 @@ GRANT ALL PRIVILEGES ON DATABASE $1 TO $1;
 EOSQL
 }
 
-### redproduct ###
-create_database_ redproduct
+### test ###
+create_database_ test

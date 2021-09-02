@@ -32,6 +32,7 @@ services:
       "
 
   postgresql:
+    container_name: aus_test_task_postgresql
     image: postgresql:test
     build:
       context: .

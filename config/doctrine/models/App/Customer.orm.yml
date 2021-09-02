@@ -1,0 +1,32 @@
+App\Customer:
+    type: entity
+    table: customers
+    id:
+        id:
+            type: integer
+            nullable: false
+            id: true
+            unique: true
+            generator:
+                strategy: SEQUENCE
+
+    fields:
+        username:
+            type: string
+            length: 180
+        email:
+            type: string
+        firstName:
+            type: string
+            column: first_name
+        lastName:
+            type: string
+            column: last_name
+        phone:
+            type: string
+        city:
+            type: string
+        country:
+            type: string
+        gender:
+            type: string
