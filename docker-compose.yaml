@@ -13,6 +13,7 @@ services:
       - ./:/project/:ro,delegated
 
   php-fpm:
+    container_name: aus_test_task_php-fpm
     image: php:test
     build:
       context: .
