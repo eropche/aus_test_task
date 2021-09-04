@@ -18,6 +18,6 @@ final class CustomerController
 
     public function getById(CustomerIdDto $customerIdDto, GetCustomerHandler $handler): ApiResponse
     {
-        return new ApiResponse($handler->handle($customerIdDto));
+        return new ApiResponse($handler->handle($customerIdDto)->getData());
     }
 }

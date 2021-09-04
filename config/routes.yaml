@@ -1,4 +1,4 @@
 customers:
   resource: 'routes/app/customers.yaml'
-  prefix: '/customers'
+  prefix: '/'
 

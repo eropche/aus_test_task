@@ -27,7 +27,7 @@ final class UpdateCustomersHandler
     public function handle(): void
     {
         $users = $this->apiClient->getUsers(self::DEFAULT_COUNT, self::DEFAULT_NATIONALITY);
-        foreach ($users as $user) {
+        foreach ($users['results'] as $user) {
             $customer = new Customer();
             $customer->setUsername($user['login']['username']);
             $customer->setFirstName($user['name']['first']);

@@ -7,6 +7,7 @@ namespace App\Handler;
 use App\DTO\CustomerIdDto;
 use App\DTO\GetCustomerResponse;
 use App\Repository\CustomerRepository;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 final class GetCustomerHandler
 {
@@ -19,6 +20,11 @@ final class GetCustomerHandler
 
     public function handle(CustomerIdDto $customerIdDto): GetCustomerResponse
     {
-        return new GetCustomerResponse($this->repository->find($customerIdDto->customerId));
+        $customer = $this->repository->find($customerIdDto->customerId);
+        if (!$customer) {
+            throw new ResourceNotFoundException('Customer not found.');
+        }
+
+        return new GetCustomerResponse($customer);
     }
 }

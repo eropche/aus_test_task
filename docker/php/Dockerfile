@@ -1,7 +1,5 @@
 FROM php:8.0-fpm AS base
 
-ENV TZ=Europe/Moscow
-
 ARG FFMPEG_VERSION=4.4
 
 RUN apt-get update \
@@ -15,7 +13,6 @@ RUN apt-get update \
     && apt-get install -y \
         rsync \
     && echo "### PHP configuration ###" 1>&2 \
-    && printf "date.timezone = ${TZ}\nmemory_limit = -1\n" > ${PHP_INI_DIR}/php.ini \
     && echo "### Packages ###" 1>&2 \
     && apt-get install -y \
         sudo \
@@ -91,21 +88,4 @@ RUN apt-get update \
         /var/lib/apt/lists/*
 
 WORKDIR /project
-
-
-
-
-FROM base AS dev
-
-RUN apt-get update \
-    && echo "### Project dependencies ###" 1>&2 \
-    && apt-get install -y \
-        gettext \
-    && echo "### Graphviz for UML ###" 1>&2 \
-    && apt-get install -y \
-        graphviz \
-    && echo "### umask ###" 1>&2 \
-    && printf '\numask 0002\n' >> /etc/bash.bashrc \
-    && echo "### Cleanup ###" 1>&2 \
-    && rm -rf \
-        /var/lib/apt/lists/*
+EXPOSE 9000

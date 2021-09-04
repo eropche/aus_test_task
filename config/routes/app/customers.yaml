@@ -1,8 +1,9 @@
 customers_get:
+    path: customers
     controller: App\Http\Controller\CustomerController::getAll
     methods: GET
 
 customer_get_by_id:
-    path: /{customerId}
+    path: customers/{customerId}
     controller: App\Http\Controller\CustomerController::getById
     methods: GET
